@@ -59,7 +59,7 @@
         android:textSize="30dp"
         android:textColor="#FF0000"
         android:layout_margin="10dp"
-        android:text="계산  : "
+        android:text="계산 결과 : "
         />
 
 </LinearLayout>
