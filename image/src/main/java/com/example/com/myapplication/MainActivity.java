@@ -12,7 +12,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
-
 public class MainActivity extends AppCompatActivity {
     TextView text1, text2;
     Switch swit;
