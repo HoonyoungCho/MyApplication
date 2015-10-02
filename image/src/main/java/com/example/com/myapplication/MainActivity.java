@@ -1,28 +1,36 @@
 package com.example.com.myapplication;
+
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
-public class MainActivity extends AppCompatActivity {
+import android.widget.CompoundButton;
+import android.view.*;
+import android.*;
+
+import com.example.user.myapplication.*;
+import com.example.user.myapplication.R;
+
+
+public class MainActivity extends Activity {
     TextView text1, text2;
     Switch swit;
     RadioGroup rGroup;
     RadioButton jellybean, kitkat, lollipop;
     Button btnExit, btnInitial;
     ImageView ImgSys;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(com.example.user.myapplication.R.layout.activity_main);
+
+
         setTitle("안드로이드 사진 보기");
         text1 = (TextView) findViewById(R.id.Text1);
         text2 = (TextView) findViewById(R.id.Text2);
@@ -82,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 swit.setChecked(false);
+
                 text2.setVisibility(View.INVISIBLE);
                 rGroup.setVisibility(View.INVISIBLE);
                 btnExit.setVisibility(View.INVISIBLE);
@@ -94,5 +103,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    }
+}
+
+
+
+
 
