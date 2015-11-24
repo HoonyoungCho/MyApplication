@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/read"
+        android:title="다시 읽기"></item>
+
+    <item android:title="일기 삭제"
+        android:id="@+id/delete"
+        ></item>
+
+    <item android:title="글씨 크기 "
+        android:id="@+id/textsize">
+        <menu>
+            <item
+                android:id="@+id/large"
+                android:title="크게"></item>
+            <item
+                android:id="@+id/medium"
+                android:title="중간"></item>
+
+            <item
+                android:id="@+id/small"
+                android:title="작게"></item>
+
+
+        </menu>
+
+
+    </item>
+
+</menu>
