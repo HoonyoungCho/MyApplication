@@ -33,29 +33,25 @@ public class MainActivity extends Activity {
     DatePicker datePicker;
     View dialogView;
     String fileName;
-
     Calendar cal ;
-
     int cYear ;
     int cMonth;
     int cDay ;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("일기장");
-
+        setTitle("조훈영의 일기장");
         textView1 = (TextView) findViewById(R.id.textView1);
         button1 = (Button) findViewById(R.id.button1);
         editText1 = (EditText) findViewById(R.id.editText1);
 
-
         final String strSDpath = Environment.getExternalStorageDirectory().getAbsolutePath();
         final File myDir = new File(strSDpath + "/mydiary");
         if(!myDir.exists()) {
-            myDir.mkdir();
+            myDir.exists();
         }
 
         Calendar cal = Calendar.getInstance();
@@ -63,63 +59,49 @@ public class MainActivity extends Activity {
         cMonth = cal.get(Calendar.MONTH);
         cDay = cal.get(Calendar.DAY_OF_MONTH);
 
-
-
-
-
-
-
         textView1.setText(cYear+"년"+Integer.toString(cMonth+1)+"월"+cDay+"일");
         fileName = Integer.toString(cYear) + "_" + Integer.toString(cMonth +1) +"_"
                 +Integer.toString(cDay) + ".txt";
         String str = readDiary(fileName);
         editText1.setText(str);
 
-
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 try {
-
                     FileOutputStream outFs = openFileOutput(fileName, Context.MODE_WORLD_WRITEABLE);
                     String str = editText1.getText().toString();
                     outFs.write(str.getBytes());
                     outFs.close();
                     Toast.makeText(getApplicationContext(), fileName + "이 저장됨", Toast.LENGTH_SHORT).show();
+
+                    //FileOutputStream fos = new FileOutputStream(strSDpath + "/mydiary/" + fileName);
+                    //String str = editText1.getText().toString();
+                    //fos.write(str.getBytes());
+                    //fos.close();
+                    //Toast.makeText(getApplicationContext(), fileName + "이 저장됨", Toast.LENGTH_SHORT).show();
                 } catch (IOException e) {
                 }
             }
         });
-
-
 
         textView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialogView = (View) View.inflate(MainActivity.this, R.layout.dialog, null);
                 AlertDialog.Builder dlg = new AlertDialog.Builder(MainActivity.this);
-
-
                 datePicker = (DatePicker)  dialogView.findViewById(R.id.datePicker1);
-
                 datePicker.init(cYear, cMonth,cDay, new DatePicker.OnDateChangedListener() {
                     @Override
                     public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-
-
-
                     }
                 });
                 dlg.setTitle("사용자 정보 입력");
                 dlg.setView(dialogView);
-
-
-
                 dlg.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
                         int year = datePicker.getYear();
                         int month = datePicker.getMonth();
                         int date = datePicker.getDayOfMonth();
@@ -129,17 +111,11 @@ public class MainActivity extends Activity {
                         textView1.setText(Integer.toString(year)+"년" +Integer.toString(month+1)+"월"+Integer.toString(date)+"일");
                         String str = readDiary(fileName);
                         editText1.setText(str);
-
-
-
-
                     }
-
 
                 });
                 dlg.setNegativeButton("취소", null);
                 dlg.show();
-
             }
         });
     }
@@ -194,7 +170,15 @@ public class MainActivity extends Activity {
                 dlg.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        new File("/sdcard/mydiary/"+fileName).delete();
+                        File file = new File("/data/data/com.example.user.myapplication/files/" + fileName);
+                        file.delete();
+                        editText1.setText("");
+                        Toast.makeText(getApplicationContext(), "삭제했습니다.", Toast.LENGTH_SHORT).show();
+
+                        //String strSDpath = Environment.getExternalStorageDirectory().getAbsolutePath();
+                        //File file = new File(strSDpath + "/mydiary/" + fileName);
+                        //file.delete();
+                        //Toast.makeText(getApplicationContext(), "삭제했습니다.", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -203,13 +187,13 @@ public class MainActivity extends Activity {
                 dlg.show();
 
             case R.id.large:
-                editText1.setTextSize(50.0f);
+                editText1.setTextSize(70.0f);
                 break;
             case R.id.medium:
-                editText1.setTextSize(30.0f);
+                editText1.setTextSize(50.0f);
                 break;
             case R.id.small:
-                editText1.setTextSize(10.0f);
+                editText1.setTextSize(30.0f);
                 break;
 
 
