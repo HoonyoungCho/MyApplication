@@ -36,7 +36,7 @@
             ></TextView>
 
         <EditText
-            android:id="@+id/edtNum"
+            android:id="@+id/edtNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -58,7 +58,7 @@
             ></Button>
 
         <Button
-            android:id="@+id/btnInput"
+            android:id="@+id/btnInsert"
             android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:text="입력"
@@ -72,14 +72,14 @@
             ></Button>
 
         <Button
-            android:id="@+id/btnDelete"
+            android:id="@+id/btnDel"
             android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:text="삭제"
             ></Button>
 
         <Button
-            android:id="@+id/btnCheck"
+            android:id="@+id/btnSelect"
             android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:text="조회"
@@ -101,7 +101,7 @@
             ></EditText>
 
         <EditText
-            android:id="@+id/edtNumResult"
+            android:id="@+id/edtNumberResult"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
